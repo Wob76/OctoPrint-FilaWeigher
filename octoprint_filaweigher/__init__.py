@@ -6,10 +6,9 @@ import sys
 import octoprint.plugin
 import flask
 import threading
-from .hx711 import HX711
-import RPi.GPIO as GPIO
 
-class Filament_scalePlugin(octoprint.plugin.SettingsPlugin,
+
+class filaweigherPlugin(octoprint.plugin.SettingsPlugin,
 						   octoprint.plugin.AssetPlugin,
 						   octoprint.plugin.TemplatePlugin,
 						   octoprint.plugin.StartupPlugin):
@@ -38,21 +37,17 @@ class Filament_scalePlugin(octoprint.plugin.SettingsPlugin,
 		# Define your plugin's asset files to automatically include in the
 		# core UI here.
 		return dict(
-			js=["js/filament_scale.js"],
-			css=["css/filament_scale.css"],
-			less=["less/filament_scale.less"]
+			js=["js/filaweigher.js"],
+			css=["css/filaweigher.css"],
+			less=["less/filaweigher.less"]
 		)
 
 	
 	def on_startup(self, host, port):
-		self.hx = HX711(20, 21)
-		self.hx.set_reading_format("LSB", "MSB") 
-		self.hx.reset()
-		self.hx.power_up()
-		self.t = octoprint.util.RepeatedTimer(3.0, self.check_weight)
+		self.t = octoprint.util.RepeatedTimer(3.0, self.check_sensors)
 		self.t.start()
 		
-	def check_weight(self):
+	def check_sensors(self):
 		self.hx.power_up()
 		v = self.hx.read()
 		self._plugin_manager.send_plugin_message(self._identifier, v) 
