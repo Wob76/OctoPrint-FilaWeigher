@@ -20,12 +20,12 @@ class filaweigherPlugin(octoprint.plugin.SettingsPlugin,
 		]
 	
 	def get_settings_defaults(self):
-		return dict({
-			weight-topic:["your/weight/topic"],
-			temperature-topic:["your/temperature/topic"],
-			humidity-topic:["your/humidity/topic"],
-			pressure-topic:["your/pressure/topic"] 
-		})
+		return dict(
+			weight-topic="your/weight/topic",
+			temperature-topic="your/temperature/topic",
+			humidity-topic="your/humidity/topic",
+			pressure-topic="your/pressure/topic" 
+		)
 
 	def get_assets(self):
 		return dict(
