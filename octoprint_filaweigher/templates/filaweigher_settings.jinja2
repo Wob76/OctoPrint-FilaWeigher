@@ -1,0 +1,48 @@
+
+<form class="form-horizontal">
+	<H4>Current Scale Reading</H4>
+	<div class="control-group">
+
+	</div>
+
+	
+	<div class='filament-scale-settings-container' data-bind="css: {'filament-scale-disabled': settings.settings.plugins.filament_scale.lastknownweight() == 'Error'}">
+		<H4>Sensors</H4>		
+		<p>
+			Specify the MQTT Topics for the filament scale
+		</p>	
+		
+		<div class="control-group">
+			<label class="control-label">{{ _('Weight Topic') }}</label>
+			<div class="controls">
+				<div class="input-append">
+					<input type="text" class="input-mini" id='settings-weight-topic' data-bind="value: weight-topic">
+				</div>				
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<div class="controls">
+				<div class="input-append">
+					<input type="text" class="input-mini" id='settings-temperature-topic' data-bind="value: temperature-topic">
+				</div>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<div class="controls">
+				<div class="input-append">
+					<input type="text" class="input-mini" id='settings-humidity-topic' data-bind="value: humidity-topic">
+				</div>
+			</div>
+		</div>	
+		
+		<div class="control-group">
+			<div class="controls">
+				<div class="input-append">
+					<input type="text" class="input-mini" id='settings-pressure-topic' data-bind="value: pressure-topic">
+				</div>
+			</div>
+		</div>	
+	</div>
+</form>
