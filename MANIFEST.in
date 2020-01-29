@@ -1,5 +1,5 @@
 include README.md
-recursive-include octoprint_filament_scale/templates *
-recursive-include octoprint_filament_scale/translations *
-recursive-include octoprint_filament_scale/static *
+recursive-include octoprint_filaweigher/templates *
+recursive-include octoprint_filaweigher/translations *
+recursive-include octoprint_filaweigher/static *
 
