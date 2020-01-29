@@ -42,10 +42,9 @@ class filaweigherPlugin(octoprint.plugin.SettingsPlugin,
 		self.t.start()
 		
 	def check_sensors(self):
-		self.hx.power_up()
-		v = self.hx.read()
-		self._plugin_manager.send_plugin_message(self._identifier, v) 
-		self.hx.power_down()
+
+		self._plugin_manager.send_plugin_message(self._identifier, 25) 
+
 		
 	def get_update_information(self):
 
