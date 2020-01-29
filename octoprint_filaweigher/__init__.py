@@ -13,14 +13,14 @@ class filaweigherPlugin(octoprint.plugin.SettingsPlugin,
 						   octoprint.plugin.TemplatePlugin,
 						   octoprint.plugin.StartupPlugin):
 
-
 	def get_template_configs(self):
 		return [
 			dict(type="settings", custom_bindings=True)
 		]
-    	def on_after_startup(self):
-        	self._logger.info("Hello World!")
-		
+
+	def on_after_startup(self):
+		self._logger.info("Hello World!")
+
 	def get_settings_defaults(self):
 		return dict(
 			weightTopic=["your/weight/topic"],
@@ -36,21 +36,14 @@ class filaweigherPlugin(octoprint.plugin.SettingsPlugin,
 			less=["less/filaweigher.less"]
 		)
 
-	
 	def on_startup(self, host, port):
 		self.t = octoprint.util.RepeatedTimer(3.0, self.check_sensors)
 		self.t.start()
-		
-	def check_sensors(self):
 
+	def check_sensors(self):
 		self._plugin_manager.send_plugin_message(self._identifier, 25) 
 
-	def get_template_configs(self):
-	    return [
-		dict(type="settings", custom_bindings=False)
-	    ]		
 	def get_update_information(self):
-
 		return dict(
 			filaweigher=dict(
 				displayName="OctoPrint FilaWeigher",
@@ -67,7 +60,6 @@ class filaweigherPlugin(octoprint.plugin.SettingsPlugin,
 			)
 		)
 
-
 # If you want your plugin to be registered within OctoPrint under a different name than what you defined in setup.py
 # ("OctoPrint-PluginSkeleton"), you may define that here. Same goes for the other metadata derived from setup.py that
 # can be overwritten via __plugin_xyz__ control properties. See the documentation for that.
@@ -79,6 +71,6 @@ def __plugin_load__():
 
 	global __plugin_hooks__
 	__plugin_hooks__ = {
-		"octoprint.plugin5.softwareupdate.check_config": __plugin_implementation__.get_update_information
+		"octoprint.plugins.softwareupdate.check_config": __plugin_implementation__.get_update_information
 	}
 
