@@ -45,7 +45,10 @@ class filaweigherPlugin(octoprint.plugin.SettingsPlugin,
 
 		self._plugin_manager.send_plugin_message(self._identifier, 25) 
 
-		
+	def get_template_configs(self):
+	    return [
+		dict(type="settings", custom_bindings=False)
+	    ]		
 	def get_update_information(self):
 
 		return dict(
