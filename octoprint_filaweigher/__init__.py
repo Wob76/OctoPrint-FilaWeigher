@@ -18,7 +18,9 @@ class filaweigherPlugin(octoprint.plugin.SettingsPlugin,
 		return [
 			dict(type="settings", custom_bindings=True)
 		]
-	
+    	def on_after_startup(self):
+        	self._logger.info("Hello World!")
+		
 	def get_settings_defaults(self):
 		return dict(
 # 			weight-topic=["your/weight/topic"],
