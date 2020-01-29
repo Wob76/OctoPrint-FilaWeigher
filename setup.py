@@ -2,7 +2,7 @@
 
 
 
-plugin_identifier = "octoprint_filaweigher"
+plugin_identifier = "filaweigher"
 plugin_package = "octoprint_filaweigher"
 plugin_name = "OctoPrint Filaweigher"
 plugin_version = "0.0.1"
