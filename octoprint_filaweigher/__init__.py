@@ -48,7 +48,7 @@ class filaweigherPlugin(octoprint.plugin.SettingsPlugin,
 	def get_update_information(self):
 
 		return dict(
-			filament_scale=dict(
+			filaweigher=dict(
 				displayName="OctoPrint FilaWeigher",
 				displayVersion=self._plugin_version,
 
@@ -59,7 +59,7 @@ class filaweigherPlugin(octoprint.plugin.SettingsPlugin,
 				current=self._plugin_version,
 
 				# update method: pip
-				pip="https://github.com/dieki-n/OctoPrint-Filament-scale/archive/{target_version}.zip"
+				pip="https://github.com/simpat1zq/OctoPrint-FilaWeigher/archive/{target_version}.zip"
 			)
 		)
 
