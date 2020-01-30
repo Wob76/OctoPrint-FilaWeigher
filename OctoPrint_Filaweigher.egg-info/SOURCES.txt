@@ -1,0 +1,15 @@
+MANIFEST.in
+README.md
+setup.py
+OctoPrint_Filaweigher.egg-info/PKG-INFO
+OctoPrint_Filaweigher.egg-info/SOURCES.txt
+OctoPrint_Filaweigher.egg-info/dependency_links.txt
+OctoPrint_Filaweigher.egg-info/entry_points.txt
+OctoPrint_Filaweigher.egg-info/not-zip-safe
+OctoPrint_Filaweigher.egg-info/requires.txt
+OctoPrint_Filaweigher.egg-info/top_level.txt
+octoprint_filaweigher/__init__.py
+octoprint_filaweigher/static/css/filaweigher.css
+octoprint_filaweigher/static/js/filaweigher.js
+octoprint_filaweigher/static/less/filaweigher.less
+octoprint_filaweigher/templates/filaweigher_settings.jinja2

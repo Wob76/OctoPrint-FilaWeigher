@@ -6,6 +6,7 @@ import sys
 import octoprint.plugin
 import flask
 import threading
+import urllib2
 
 
 class filaweigherPlugin(octoprint.plugin.SettingsPlugin,
@@ -37,11 +38,14 @@ class filaweigherPlugin(octoprint.plugin.SettingsPlugin,
 		)
 
 	def on_startup(self, host, port):
-		self.t = octoprint.util.RepeatedTimer(3.0, self.check_sensors)
+		self.number = 0
+		self.t = octoprint.util.RepeatedTimer(5.0, self.check_sensors)
 		self.t.start()
 
 	def check_sensors(self):
-		self._plugin_manager.send_plugin_message(self._identifier, 25) 
+		page = urllib2.urlopen(self._settings.get(["weightTopic"]))
+		self._plugin_manager.send_plugin_message(self._identifier, page.read()) 
+		self.number +=  1
 
 	def get_update_information(self):
 		return dict(
