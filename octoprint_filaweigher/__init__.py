@@ -40,7 +40,8 @@ class filaweigherPlugin(octoprint.plugin.SettingsPlugin,
 		self.t.start()
 
 	def check_sensors(self):
-		url = "http://" + self._settings.get(["filaweigherIP"]) + "/json"
+		url = "http://192.168.45.108/json"
+		#url = "http://" + self._settings.get(["filaweigherIP"]) + "/json"
 		page = urllib2.urlopen(url)
 		self._plugin_manager.send_plugin_message(self._identifier, page.read()) 
 		self.number +=  1
