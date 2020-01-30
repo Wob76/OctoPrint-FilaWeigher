@@ -24,10 +24,7 @@ class filaweigherPlugin(octoprint.plugin.SettingsPlugin,
 
 	def get_settings_defaults(self):
 		return dict(
-			weightTopic=["your/weight/topic"],
-			temperatureTopic=["your/temperature/topic"],
-			humidityTopic=["your/humidity/topic"],
-			pressureTopic=["your/pressure/topic"] 
+			filaweigherIP=["Enter FilaWeigher IP here"],
 		)
 
 	def get_assets(self):
@@ -43,7 +40,8 @@ class filaweigherPlugin(octoprint.plugin.SettingsPlugin,
 		self.t.start()
 
 	def check_sensors(self):
-		page = urllib2.urlopen(self._settings.get(["weightTopic"]))
+		url = "http://" + self._settings.get(["filaweigherIP"]) + "/json"
+		page = urllib2.urlopen(url)
 		self._plugin_manager.send_plugin_message(self._identifier, page.read()) 
 		self.number +=  1
 
