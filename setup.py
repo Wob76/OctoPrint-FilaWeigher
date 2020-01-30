@@ -5,7 +5,7 @@
 plugin_identifier = "filaweigher"
 plugin_package = "octoprint_filaweigher"
 plugin_name = "OctoPrint Filaweigher"
-plugin_version = "0.0.1"
+plugin_version = "2020.01.30.1"
 plugin_description = "Plugin to integrate the FilaWeigher into OctoPrint. FilaWeigher is an ESP8266 based weight/temperature/humidty sensor."
 plugin_author = "Simit Patel"
 plugin_author_email = "simit@automatedhome.party"
