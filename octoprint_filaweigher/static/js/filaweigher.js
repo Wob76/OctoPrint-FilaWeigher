@@ -23,7 +23,6 @@ $(function() {
 
 		self.onStartup = function() {
 			var element = $("#state").find(".accordion-inner [data-bind='text: stateString']");
-			
 
             if (element.length) {
                 //var text = gettext("Filament Remaining");

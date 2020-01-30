@@ -7,6 +7,7 @@ import octoprint.plugin
 import flask
 import threading
 import urllib2
+import socket
 
 
 class filaweigherPlugin(octoprint.plugin.SettingsPlugin,
@@ -18,9 +19,6 @@ class filaweigherPlugin(octoprint.plugin.SettingsPlugin,
 		return [
 			dict(type="settings", custom_bindings=True)
 		]
-
-	def on_after_startup(self):
-		self._logger.info("Hello World!")
 
 	def get_settings_defaults(self):
 		return dict(
@@ -40,11 +38,20 @@ class filaweigherPlugin(octoprint.plugin.SettingsPlugin,
 		self.t.start()
 
 	def check_sensors(self):
-		url = "http://192.168.45.108/json"
-		#url = "http://" + self._settings.get(["filaweigherIP"]) + "/json"
-		page = urllib2.urlopen(url)
-		self._plugin_manager.send_plugin_message(self._identifier, page.read()) 
-		self.number +=  1
+		# url = "http://192.168.45.108/json"
+		IPAddress = self._settings.get(["filaweigherIP"])[0]
+		if self.is_valid_ipv4_address(IPAddress):
+			url = "http://" + self._settings.get(["filaweigherIP"])[0] + "/json"
+			self._logger.info(url)
+			try:
+				page = urllib2.urlopen(url)
+				self._plugin_manager.send_plugin_message(self._identifier, page.read())
+			except:
+				self._logger("Couldn't connect to the FilaWeigher")
+			 
+		else:
+			self._logger.info("'" + IPAddress + "' is not a valid IP Address")
+			self.t.cancel()
 
 	def get_update_information(self):
 		return dict(
@@ -62,6 +69,27 @@ class filaweigherPlugin(octoprint.plugin.SettingsPlugin,
 				pip="https://github.com/simpat1zq/OctoPrint-FilaWeigher/archive/{target_version}.zip"
 			)
 		)
+
+	def on_settings_save(self):
+		try:
+			self.t.start()
+		except:
+			self._logger.info("Couldn't start the timer. Might be running already")
+
+
+	def is_valid_ipv4_address(self,address):
+		try:
+			socket.inet_pton(socket.AF_INET, address)
+		except AttributeError:  # no inet_pton here, sorry
+			try:
+				socket.inet_aton(address)
+			except socket.error:
+				return False
+			return address.count('.') == 3
+		except socket.error:  # not a valid address
+			return False
+
+		return True
 
 # If you want your plugin to be registered within OctoPrint under a different name than what you defined in setup.py
 # ("OctoPrint-PluginSkeleton"), you may define that here. Same goes for the other metadata derived from setup.py that

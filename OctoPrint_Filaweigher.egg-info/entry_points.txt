@@ -1,0 +1,3 @@
+[octoprint.plugin]
+filaweigher = octoprint_filaweigher
+
