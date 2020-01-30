@@ -98,6 +98,6 @@ $(function() {
         // ViewModels your plugin depends on, e.g. loginStateViewModel, settingsViewModel, ...
         dependencies: ["printerStateViewModel", "settingsViewModel"],
         // Elements to bind to, e.g. #settings_plugin_filament_scale, #tab_plugin_filament_scale, ...
-        elements: ["#settings_plugin_filament_scale"]
+        elements: ["#settings_plugin_filaweigher"]
     });
 });
