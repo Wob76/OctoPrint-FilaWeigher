@@ -16,9 +16,9 @@ $(function() {
 			if (plugin != "filaweigher") return; //stop if the message wasn't from the filaweigher plugin
 			var obj = JSON.parse(message); //parse the json and load it into obj
 			//set all the sensor values 
-			self.printerState.filamentRemainingString(obj.weight + "g"); 
-			self.printerState.temperatureString(obj.temperature + "%");
-			self.printerState.humidityString(obj.humidity + "C");
+			self.printerState.filamentRemainingString(parseFloat(obj.weight).toFixed() + "g"); 
+			self.printerState.temperatureString(parseFloat(obj.temperature).toFixed(1) + "%");
+			self.printerState.humidityString(parseFloat(obj.humidity).toFixed(1) + "C");
 			//self.printerState.pressureString(obj.pressure); 
 	
 			console.log(message);
