@@ -99,12 +99,12 @@ class filaweigherPlugin(octoprint.plugin.SettingsPlugin,
 
 				# version check: github repository
 				type="github_release",
-				user="simpat1zq",
+				user="Wob76",
 				repo="OctoPrint-FilaWeigher",
 				current=self._plugin_version,
 
 				# update method: pip
-				pip="https://github.com/simpat1zq/OctoPrint-FilaWeigher/archive/{target_version}.zip"
+				pip="https://github.com/Wob76/OctoPrint-FilaWeigher/archive/{target_version}.zip"
 			)
 		)
 
