@@ -9,7 +9,7 @@ His plugin uses a HX711 directly connected to a Pi. But I'm using a desktop PC r
 
 Enter the following URL into the Plugin Manager to install. 
 
-    https://github.com/Wob76/FilaWeigher/archive/master.zip
+    https://github.com/Wob76/OctoPrint-FilaWeigher/archive/master.zip
 
 
 .
