@@ -17,8 +17,8 @@ $(function() {
 			var obj = JSON.parse(message); //parse the json and load it into obj
 			//set all the sensor values 
 			self.printerState.filamentRemainingString(parseFloat(obj.weight).toFixed(1) + "g"); 
-			self.printerState.temperatureString(parseFloat(obj.temperature).toFixed(1) + "%");
-			self.printerState.humidityString(parseFloat(obj.humidity).toFixed(1) + "C");
+			self.printerState.temperatureString(parseFloat(obj.temperature).toFixed(1) + "C");
+			self.printerState.humidityString(parseFloat(obj.humidity).toFixed(1) + "%");
 			//self.printerState.pressureString(obj.pressure); 
 	
 			console.log(message);
